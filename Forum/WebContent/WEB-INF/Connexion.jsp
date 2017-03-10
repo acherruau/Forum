@@ -4,11 +4,11 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Inscription</title>
+        <title>Connextion</title>
         <link type="text/css" rel="stylesheet" href="form.css" />
     </head>
     <body>
-        <form method="post" action="inscription">
+        <form method="post" action="Connexion">
             <fieldset>
                 <legend>Connexion</legend>
                 <p>Vous pouvez vous connecter via ce formulaire.</p>
@@ -25,7 +25,6 @@
 
                 <input type="submit" value="Connexion" class="sansLabel" />
                 
-                <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
                 <br />
             </fieldset>
         </form>
