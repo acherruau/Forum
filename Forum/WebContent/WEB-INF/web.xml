@@ -14,8 +14,14 @@
         <servlet-name>Inscription</servlet-name>
         <servlet-class>servlets.Inscription</servlet-class>
     </servlet>
+    
+    
+    
     <servlet-mapping>
         <servlet-name>Inscription</servlet-name>
         <url-pattern>/Inscription</url-pattern>
     </servlet-mapping>
+    
+    
+    
 </web-app>
