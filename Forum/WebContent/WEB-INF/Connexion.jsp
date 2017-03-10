@@ -4,7 +4,10 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Connextion</title>
+
+        <title>Connexion</title>
+
+
         <link type="text/css" rel="stylesheet" href="form.css" />
     </head>
     <body>
