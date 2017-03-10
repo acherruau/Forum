@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Inscription extends HttpServlet {
 
-    public static final String VUE = "/WEB-INF/Inscription.jsp";
+	private static final long serialVersionUID = 1L;
+	public static final String VUE = "/WEB-INF/Inscription.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
     public static final String CHAMP_CONF = "confirmation";

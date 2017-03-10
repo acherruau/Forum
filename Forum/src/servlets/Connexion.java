@@ -1,6 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,20 +20,7 @@ public class Connexion extends HttpServlet {
 	public static final String VUE = "/WEB-INF/Connexion.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
-    public static final String ATT_ERREURS  = "erreurs";
-    public static final String ATT_RESULTAT = "resultat";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Connexion() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		/* Affichage de la page d'inscription */
@@ -42,9 +32,15 @@ public class Connexion extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+	        /* Récupération des champs du formulaire. */
+
+	        String email = request.getParameter( CHAMP_EMAIL );
+
+	        String motDePasse = request.getParameter( CHAMP_PASS );
+	        
+	        
+		}
 }

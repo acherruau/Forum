@@ -4,7 +4,10 @@
 <html>
     <head>
         <meta charset="utf-8" />
+
         <title>Connexion</title>
+
+
         <link type="text/css" rel="stylesheet" href="form.css" />
     </head>
     <body>
@@ -25,7 +28,6 @@
 
                 <input type="submit" value="Connexion" class="sansLabel" />
                 
-                <p class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</p>
                 <br />
             </fieldset>
         </form>
