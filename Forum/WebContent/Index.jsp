@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here coucou</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<a href="<c:url value="/Inscription" />">Inscription</a> 
