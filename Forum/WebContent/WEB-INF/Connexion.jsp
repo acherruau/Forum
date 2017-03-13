@@ -27,8 +27,9 @@
                 <br />
 
                 <input type="submit" value="Connexion" class="sansLabel" />
-                
+                <p>${txt}</p>
                 <br />
+                
             </fieldset>
         </form>
     </body>

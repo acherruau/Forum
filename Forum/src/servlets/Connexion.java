@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Connexion
- */
+import bdd.JDBC;
+
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {
 	
@@ -21,6 +17,7 @@ public class Connexion extends HttpServlet {
 	public static final String VUE = "/WEB-INF/Connexion.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
+    public static final String ATT_RESULTAT ="txt";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -30,77 +27,25 @@ public class Connexion extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+	
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+			String txt="none";
 
 	        /* Récupération des champs du formulaire. */
 
 	        String email = request.getParameter( CHAMP_EMAIL );
 
-	        String Passe = request.getParameter( CHAMP_PASS );
+	        String passe = request.getParameter( CHAMP_PASS );
 	        
+	        JDBC connection = new JDBC();
 	        
-
-	        try {
-
-	            Class.forName( "com.mysql.jdbc.Driver" );
-
-	        } catch ( ClassNotFoundException e ) {
-
-	            /* Gérer les éventuelles erreurs ici. */
-
-	        }
+	        txt = connection.Connexion(email,passe);
 	        
-	        /* Connexion à la base de données */
-
-	        String url = "jdbc:mysql://localhost:3306/forum";
-
-	        String utilisateur = "root";
-
-	        String motDePasse = "";
-
-	        Connection connexion = null;
-
+	        request.setAttribute(ATT_RESULTAT, txt);
 	        
-	        
-	        try {
-
-	            connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
-
-
-	            /* Ici, nous placerons nos requêtes vers la BDD */
-
-	            /* ... */
-
-
-	        } catch ( SQLException e ) {
-
-	            /* Gérer les éventuelles erreurs ici */
-
-	        } finally {
-
-	            if ( connexion != null )
-
-	                try {
-
-	                    /* Fermeture de la connexion */
-
-	                    connexion.close();
-
-	                } catch ( SQLException ignore ) {
-
-	                    /* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
-
-	                }
-
-	        }
-	        
-	        
-	        
-	        
-	        
+	        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 		}
+
 }
