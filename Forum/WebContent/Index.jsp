@@ -5,10 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<c:url value="/Inscription" />">Inscription</a> 
+	<jsp:include page="/WEB-INF/Menu.jsp" ></jsp:include>
+
 
 
 </body>
