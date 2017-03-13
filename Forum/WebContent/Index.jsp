@@ -10,8 +10,8 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/Menu.jsp" ></jsp:include>
-
-
+	<jsp:include page="/WEB-INF/Contenu.jsp" ></jsp:include>
+	<jsp:include page="/WEB-INF/Footer.jsp" ></jsp:include>
 
 </body>
 </html>
