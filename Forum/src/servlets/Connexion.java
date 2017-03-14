@@ -14,7 +14,8 @@ import bdd.JDBC;
 public class Connexion extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "/WEB-INF/Connexion.jsp";
+	public static final String VUE = "/WEB-INF/ok.jsp";
+	public static final String VUE1 = "/Index.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
     public static final String ATT_RESULTAT ="txt";
@@ -23,6 +24,7 @@ public class Connexion extends HttpServlet {
 		
 		/* Affichage de la page d'inscription */
 
+	
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 
 	}
@@ -44,8 +46,12 @@ public class Connexion extends HttpServlet {
 	        txt = connection.Connexion(email,passe);
 	        
 	        request.setAttribute(ATT_RESULTAT, txt);
-	        
-	        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+	        if(txt=="bienvenue"){
+	        	this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+		    }
+	        else
+	        {
+	        	this.getServletContext().getRequestDispatcher(VUE1).forward(request, response);
+	        }
 		}
-
 }
