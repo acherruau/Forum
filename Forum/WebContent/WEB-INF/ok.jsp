@@ -29,6 +29,7 @@ session.getAttribute("email");;
         <div id="navbar" class="navbar-collapse collapse" >
         	<form class="navbar-form navbar-right" >        
         	<a>Bonjour <%=login%></a>
+        	<button type="submit" class="btn btn-success">Déconnexion</button>
           	</form>
           
         </div><!--/.navbar-collapse -->
