@@ -94,6 +94,26 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
+
+    private static final String SQL_CONNECT = "SELECT mail, mdp FROM utilisateur where mail=? and mdp=?";
+ 
+	@Override
+	public void connexion(String pseudo, String mdp) throws DAOException {
+		
+		// TODO Auto-generated method stub
+		Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        
+        try{
+        	connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee( connexion, SQL_CONNECT,true,pseudo,mdp);
+            //int statut = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+        	throw new DAOException(e);
+        } finally {
+			fermetureSilencieuse(connexion);
+		}
+	}
     
     
 }

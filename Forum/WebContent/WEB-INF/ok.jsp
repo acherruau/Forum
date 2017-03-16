@@ -27,9 +27,30 @@ session.getAttribute("email");;
           <a class="navbar-brand" href="#">Nom du site</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" >
-        	<form class="navbar-form navbar-right" >        
+        	<form class="navbar-form navbar-right" >  
+        	<c:if test="${empty sessionScope.sessionUtilisateur }"> 
+        	<form class="navbar-form navbar-right" name="Form" action="Connexion" method="POST">
+            <div class="form-group">
+              <input type="text" placeholder="Pseudo" class="form-control" name="email" id="email">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Mot de passe" class="form-control" name="motdepasse" id="motdepasse">
+            </div>
+            <button type="submit" class="btn btn-success">Connexion</button>
+            <!-- <a class="btn btn-success" href="<c:url value="/Inscription"/>">Inscription</a>
+          	-->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#card">
+  Inscription
+</button>
+       </form> 
+        	</c:if>
+        	
+        	
+        	
+        	<c:if test="${!empty sessionScope.sessionUtilisateur }">      
         	<a>Bonjour <%=login%></a>
         	<button type="submit" class="btn btn-success">Déconnexion</button>
+          	</c:if>
           	</form>
           
         </div><!--/.navbar-collapse -->

@@ -8,4 +8,5 @@ public interface UtilisateurDao {
 
     utilisateur trouver( String email ) throws DAOException;
 
+    void connexion(String pseudo, String mdp) throws DAOException;
 }
