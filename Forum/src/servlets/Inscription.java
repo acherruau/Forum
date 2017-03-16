@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,9 @@ public class Inscription extends HttpServlet {
     public static final String ATT_USER         = "utilisateur";
     public static final String ATT_FORM         = "form";
     public static final String VUE              = "/WEB-INF/Inscription.jsp";
-
+    
     private UtilisateurDao     utilisateurDao;
+    
 
     public void init() throws ServletException {
         /* Récupération d'une instance de notre DAO Utilisateur */
@@ -31,9 +33,10 @@ public class Inscription extends HttpServlet {
     }
 
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+    	
         /* Préparation de l'objet formulaire */
         InscriptionForm form = new InscriptionForm( utilisateurDao );
-
+        
         /* Traitement de la requête et récupération du bean en résultant */
         utilisateur utilisateur = form.inscrireUtilisateur( request );
 
