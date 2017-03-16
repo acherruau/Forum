@@ -47,9 +47,12 @@ session.getAttribute("email");;
         	
         	
         	
-        	<c:if test="${!empty sessionScope.sessionUtilisateur }">      
+        	<c:if test="${!empty sessionScope.sessionUtilisateur }">
+        	    
         	<a>Bonjour <%=login%></a>
-        	<button type="submit" class="btn btn-success">Déconnexion</button>
+        	<form class="navbar-form navbar-right" name="Form" action="Deconnexion" method="POST">  
+        	<button type="submit" class="btn btn-success" >Déconnexion</button>
+        	</form>
           	</c:if>
           	</form>
           
