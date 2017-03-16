@@ -1,5 +1,77 @@
 package servlets;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import beans.utilisateur;
+import dao.DAOFactory;
+import dao.UtilisateurDao;
+import form.InscriptionForm;
+
+public class Inscription extends HttpServlet {
+    public static final String CONF_DAO_FACTORY = "daofactory";
+    public static final String ATT_USER         = "utilisateur";
+    public static final String ATT_FORM         = "form";
+    public static final String VUE              = "/WEB-INF/Inscription.jsp";
+
+    private UtilisateurDao     utilisateurDao;
+
+    public void init() throws ServletException {
+        /* Récupération d'une instance de notre DAO Utilisateur */
+        this.utilisateurDao = ( (DAOFactory) getServletContext().getAttribute( CONF_DAO_FACTORY ) ).getUtilisateurDao();
+    }
+
+    public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Affichage de la page d'inscription */
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
+
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+        /* Préparation de l'objet formulaire */
+        InscriptionForm form = new InscriptionForm( utilisateurDao );
+
+        /* Traitement de la requête et récupération du bean en résultant */
+        utilisateur utilisateur = form.inscrireUtilisateur( request );
+
+        /* Stockage du formulaire et du bean dans l'objet request */
+        request.setAttribute( ATT_FORM, form );
+        request.setAttribute( ATT_USER, utilisateur );
+
+        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package servlets;
+
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,7 +100,7 @@ public class Inscription extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 
-        /* Affichage de la page d'inscription */
+         Affichage de la page d'inscription 
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 
@@ -41,7 +113,7 @@ public class Inscription extends HttpServlet {
         Map<String, String> erreurs = new HashMap<String, String>();
 
 
-        /* Récupération des champs du formulaire. */
+         Récupération des champs du formulaire. 
 
         String email = request.getParameter( CHAMP_EMAIL );
 
@@ -52,7 +124,7 @@ public class Inscription extends HttpServlet {
         String nom = request.getParameter( CHAMP_NOM );
 
 
-        /* Validation du champ email. */
+         Validation du champ email. 
 
         try {
 
@@ -65,7 +137,7 @@ public class Inscription extends HttpServlet {
         }
 
 
-        /* Validation des champs mot de passe et confirmation. */
+         Validation des champs mot de passe et confirmation. 
 
         try {
 
@@ -78,7 +150,7 @@ public class Inscription extends HttpServlet {
         }
 
 
-        /* Validation du champ nom. */
+         Validation du champ nom. 
 
         try {
 
@@ -91,7 +163,7 @@ public class Inscription extends HttpServlet {
         }
 
 
-        /* Initialisation du résultat global de la validation. */
+         Initialisation du résultat global de la validation. 
 
         if ( erreurs.isEmpty() ) {
 
@@ -104,14 +176,14 @@ public class Inscription extends HttpServlet {
         }
 
 
-        /* Stockage du résultat et des messages d'erreur dans l'objet request */
+         Stockage du résultat et des messages d'erreur dans l'objet request 
 
         request.setAttribute( ATT_ERREURS, erreurs );
 
         request.setAttribute( ATT_RESULTAT, resultat );
 
 
-        /* Transmission de la paire d'objets request/response à notre JSP */
+         Transmission de la paire d'objets request/response à notre JSP 
 
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 
@@ -167,4 +239,4 @@ public class Inscription extends HttpServlet {
     	
     }
     
-}
+}*/

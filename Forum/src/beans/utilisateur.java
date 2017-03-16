@@ -31,7 +31,8 @@ public class utilisateur {
     public void setPseudo( String pseudo ) {
         this.pseudo = pseudo;
     }
-    public String getPdeudo() {
+    
+    public String getPseudo() {
         return pseudo;
     }
 }

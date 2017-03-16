@@ -9,12 +9,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>Inscription</servlet-name>
     <servlet-class>servlets.Inscription</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>Inscription</servlet-name>
     <url-pattern>/Inscription</url-pattern>
   </servlet-mapping>
+  
+  	<listener>
+    	<listener-class>config.InitialisationDaoFactory</listener-class>
+	</listener>
+
 </web-app>

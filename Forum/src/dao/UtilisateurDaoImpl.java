@@ -32,7 +32,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
 	
 	
-    private static final String SQL_SELECT_PAR_EMAIL = "SELECT id, email, nom, mot_de_passe, date_inscription FROM Utilisateur WHERE email = ?";
+    private static final String SQL_SELECT_PAR_EMAIL = "SELECT id, mail, pseudo, mdp FROM utilisateur WHERE mail = ?";
 
     /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
     @Override
@@ -60,11 +60,40 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         return utilisateur;
     }
 
-    /* Implémentation de la méthode creer() définie dans l'interface UtilisateurDao */
-    @Override
-    public void creer( utilisateur utilisateur ) throws IllegalArgumentException, DAOException {
-    }
+    private static final String SQL_INSERT = "INSERT INTO utilisateur (mail, mdp, pseudo) VALUES (?, ?, ?)";
+
     
+    
+    /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
+    @Override
+    public void creer( utilisateur utilisateur ) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet valeursAutoGenerees = null;
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee( connexion, SQL_INSERT, true, utilisateur.getEmail(), utilisateur.getMotDePasse(), utilisateur.getPseudo() );
+            int statut = preparedStatement.executeUpdate();
+            /* Analyse du statut retourné par la requête d'insertion */
+            if ( statut == 0 ) {
+                throw new DAOException( "Échec de la création de l'utilisateur, aucune ligne ajoutée dans la table." );
+            }
+            /* Récupération de l'id auto-généré par la requête d'insertion */
+            valeursAutoGenerees = preparedStatement.getGeneratedKeys();
+            if ( valeursAutoGenerees.next() ) {
+                /* Puis initialisation de la propriété id du bean Utilisateur avec sa valeur */
+                utilisateur.setId( valeursAutoGenerees.getLong( 1 ) );
+            } else {
+                throw new DAOException( "Échec de la création de l'utilisateur en base, aucun ID auto-généré retourné." );
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
+        }
+    }
     
     
 }

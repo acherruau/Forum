@@ -28,9 +28,9 @@
                 <span class="erreur">${erreurs['confirmation']}</span>
                 <br />
 
-                <label for="nom">Nom d'utilisateur</label>
-                <input type="text" id="nom" name="nom" value="<c:out value="${param.nom}"/>" size="20" maxlength="20" />
-                <span class="erreur">${erreurs['nom']}</span>
+                <label for="pseudo">Nom d'utilisateur</label>
+                <input type="text" id="nom" name="pseudo" value="<c:out value="${param.pseudo}"/>" size="20" maxlength="20" />
+                <span class="erreur">${erreurs['pseudo']}</span>
                 <br />
 
                 <input type="submit" value="Inscription" class="sansLabel" />
