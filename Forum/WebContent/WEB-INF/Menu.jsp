@@ -40,22 +40,22 @@
               <h4 class="modal-title">Créer votre compte :</h4>
             </div>
             <div class="modal-body">
-              <form action="test.php">
+              <form action="Inscription" method="POST">
                 <div class="form-group">
                   <label for="pseudo">Pseudo</label>
-                  <input type="text" class="form-control" name ="pseudo" id="pseudo" placeholder="Votre pseudo">
+                  <input type="text" class="form-control" name ="pseudo" id="pseudo" value="<c:out value="${param.pseudo}"/>" placeholder="Votre pseudo">
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email">
+                  <input type="email" class="form-control" name="email" id="email" value="<c:out value="${param.email}"/>" placeholder="Votre Email">
                 </div>
                 <div class="form-group">
-                  <label for="mdp">Mot de passe</label>
-                  <input type="mdp" class="form-control" name="mdp" id="mdp" placeholder="Votre mdp">
+                  <label for="motdepasse">Mot de passe</label>
+                  <input type="password" class="form-control" name="motdepasse" id="motdepasse" value="" placeholder="Votre mdp">
                 </div>
                 <div class="form-group">
-                  <label for="remdp">Confirmez votre mdp</label>
-                  <input type="remdp" class="form-control" name="remdp" id="remdp" placeholder="confirmer votre mdp">
+                  <label for="confirmation">Confirmez votre mdp</label>
+                  <input type="password" class="form-control" name="confirmation" id="confirmation" value="" placeholder="confirmer votre mdp">
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
               </form>
