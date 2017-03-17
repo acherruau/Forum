@@ -20,6 +20,11 @@
     <servlet-class>servlets.Deconnexion</servlet-class>
   </servlet>
   
+   <servlet>
+    <servlet-name>Connexion</servlet-name>
+    <servlet-class>servlets.Connexion</servlet-class>
+  </servlet>
+  
   
   <servlet-mapping>
     <servlet-name>Inscription</servlet-name>
@@ -29,6 +34,11 @@
   <servlet-mapping>
     <servlet-name>Deconnexion</servlet-name>
     <url-pattern>/Deconnexion</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>Connexion</servlet-name>
+    <url-pattern>/Connexion</url-pattern>
   </servlet-mapping>
   
   

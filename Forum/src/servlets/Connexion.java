@@ -14,12 +14,13 @@ import dao.DAOFactory;
 import dao.UtilisateurDao;
 import form.ConnexionForm;
 
-@WebServlet("/Connexion")
+
 public class Connexion extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "/WEB-INF/ok.jsp";
+	public static final String VUE = "WEB-INF/ok.jsp";
 	public static final String VUE1 = "/Index.jsp";
+	public static final String URL_REDIRECTION = "Index.jsp";
     public static final String CHAMP_EMAIL = "email";
     public static final String CHAMP_PASS = "motdepasse";
     public static final String ATT_RESULTAT ="txt";
@@ -62,8 +63,8 @@ public class Connexion extends HttpServlet {
 			
 			request.setAttribute( ATT_FORM, form );
 	        request.setAttribute( ATT_USER, utilisateur );
-	        
-	        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+	        response.sendRedirect(URL_REDIRECTION);
+	       // this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
 			/*String txt="none";
 
 	        

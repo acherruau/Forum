@@ -18,6 +18,7 @@ public class Inscription extends HttpServlet {
     public static final String ATT_USER         = "utilisateur";
     public static final String ATT_FORM         = "form";
     public static final String VUE              = "/WEB-INF/ok.jsp";
+    public static final String URL_REDIRECTION = "Index.jsp";
     
     private UtilisateurDao     utilisateurDao;
     
@@ -44,7 +45,8 @@ public class Inscription extends HttpServlet {
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
 
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        response.sendRedirect(URL_REDIRECTION);
+        //this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }
 

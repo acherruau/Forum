@@ -18,7 +18,8 @@ public class Deconnexion extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
 
-        /* Redirection vers le Site du Zéro ! */
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        
+        response.sendRedirect(URL_REDIRECTION);
+       // this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

@@ -1,11 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="beans.utilisateur" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-String login = request.getParameter("email");
-session.getAttribute("email");;
-%>
+
 
 
 <html>
@@ -15,6 +13,11 @@ session.getAttribute("email");;
 <title>Insert title here</title>
 </head>
 <body>
+<%
+utilisateur u = (utilisateur) session.getAttribute("sessionUtilisateur");
+//String login = request.getParameter("email");
+//session.getAttribute("email");;
+%>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -27,7 +30,7 @@ session.getAttribute("email");;
           <a class="navbar-brand" href="#">Nom du site</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse" >
-        	<form class="navbar-form navbar-right" >  
+        	 
         	<c:if test="${empty sessionScope.sessionUtilisateur }"> 
         	<form class="navbar-form navbar-right" name="Form" action="Connexion" method="POST">
             <div class="form-group">
@@ -43,18 +46,19 @@ session.getAttribute("email");;
   Inscription
 </button>
        </form> 
+       
         	</c:if>
         	
         	
-        	
         	<c:if test="${!empty sessionScope.sessionUtilisateur }">
-        	    
-        	<a>Bonjour <%=login%></a>
-        	<form class="navbar-form navbar-right" name="Form" action="Deconnexion" method="GET">  
+        	 <form class="navbar-form navbar-right" name="Form" action="Deconnexion" method="GET">    
+         	<a>Bonjour <%=u.getEmail()%></a> 
+         	
+        	 
         	<button type="submit" class="btn btn-success" >Déconnexion</button>
         	</form>
           	</c:if>
-          	</form>
+          
           
         </div><!--/.navbar-collapse -->
       </div>
