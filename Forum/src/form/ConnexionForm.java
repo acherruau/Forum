@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import beans.utilisateur;
 
-import beans.utilisateur;
-
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
     private static final String CHAMP_PASS   = "motdepasse";
